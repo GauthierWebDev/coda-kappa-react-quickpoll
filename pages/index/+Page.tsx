@@ -1,16 +1,13 @@
-import { Counter } from "./Counter.js";
-
 export default function Page() {
   return (
-    <>
-      <h1>My Vike app</h1>
-      <p>This page is:</p>
-      <ul>
-        <li>Rendered to HTML.</li>
-        <li>
-          Interactive. <Counter />
-        </li>
-      </ul>
-    </>
+    <main>
+      <h1>QuickPoll</h1>
+      <p>Créez des sondages en quelques secondes</p>
+
+      <nav>
+        <a href="/polls">Voir les sondages</a>
+        <a href="/create">Créer un sondage</a>
+      </nav>
+    </main>
   );
 }
