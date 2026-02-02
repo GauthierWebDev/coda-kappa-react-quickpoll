@@ -1,36 +1,7 @@
-import { useLocalStorage } from "../../hooks/useLocalStorage.client";
-
-interface PollDraft {
-  question: string;
-  options: string[];
-}
+import { usePollForm } from "../../hooks/usePollForm.client";
 
 export default function CreatePoll() {
-  const [draft, setDraft] = useLocalStorage<PollDraft>("poll-draft", {
-    question: "",
-    options: [],
-  });
-
-  const handleQuestionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDraft({ ...draft, question: event.target.value });
-  };
-
-  const handleAddOption = () => {
-    setDraft({ ...draft, options: [...draft.options, ""] });
-  };
-
-  const handleChangeOption = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    optionIndex: number,
-  ) => {
-    setDraft({
-      ...draft,
-      options: draft.options.map((option, index) => {
-        if (index !== optionIndex) return option;
-        return event.target.value;
-      }),
-    });
-  };
+  const pollForm = usePollForm();
 
   return (
     <main>
@@ -41,11 +12,11 @@ export default function CreatePoll() {
         <input
           type="text"
           id="question"
-          value={draft.question}
-          onChange={handleQuestionChange}
+          value={pollForm.draft.question}
+          onChange={(event) => pollForm.updateQuestion(event.target.value)}
         />
 
-        {draft.options.map((option, index) => (
+        {pollForm.draft.options.map((option, index) => (
           <div key={`option-${String(index)}`}>
             <label htmlFor={`option-${String(index)}`}>
               Option {index + 1}
@@ -53,12 +24,14 @@ export default function CreatePoll() {
             <input
               id={`option-${String(index)}`}
               value={option}
-              onChange={(event) => handleChangeOption(event, index)}
+              onChange={(event) =>
+                pollForm.updateOption(index, event.target.value)
+              }
             />
           </div>
         ))}
 
-        <button type="button" onClick={handleAddOption}>
+        <button type="button" onClick={pollForm.addOption}>
           Ajouter une option
         </button>
       </form>
