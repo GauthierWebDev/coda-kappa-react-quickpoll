@@ -1,4 +1,4 @@
-import { useLocalStorage } from "./useLocalStorage.client";
+import { useLocalStorage } from "./useLocalStorage";
 
 interface PollDraft {
   question: string;
