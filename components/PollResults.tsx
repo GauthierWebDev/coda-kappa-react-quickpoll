@@ -4,7 +4,7 @@ interface PollResultsProps {
   poll: Poll;
 }
 
-function PollResults({ poll }: PollResultsProps) {
+export function PollResults({ poll }: PollResultsProps) {
   const totalVotes = poll.votes.reduce((acc, vote) => acc + vote.votes, 0);
 
   return (
