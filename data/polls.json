@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "question": "Quel est votre langage de programmation préféré ?",
+    "options": ["JavaScript", "Python", "Java", "C#", "Ruby"]
+  },
+  {
+    "id": "2",
+    "question": "Quel est votre OS préféré ?",
+    "options": ["Windows", "macOS", "Linux"]
+  },
+  {
+    "id": "3",
+    "question": "Quel est votre IDE préféré ?",
+    "options": ["Visual Studio Code", "IntelliJ IDEA", "Eclipse"]
+  },
+  {
+    "id": "4",
+    "question": "Quel est votre navigateur web préféré ?",
+    "options": ["Chrome", "Firefox", "Safari"]
+  },
+  {
+    "id": "5",
+    "question": "Quel est votre framework JavaScript préféré ?",
+    "options": ["React", "Vue", "Angular"]
+  }
+]
