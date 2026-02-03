@@ -1,4 +1,4 @@
-import { usePollForm } from "../../hooks/usePollForm.client";
+import { usePollForm } from "../../hooks/usePollForm";
 
 export default function CreatePoll() {
   const pollForm = usePollForm();
