@@ -1,4 +1,5 @@
 import { useLocalStorage } from "./useLocalStorage";
+import { onCreate } from "./usePollForm.telefunc";
 
 interface PollDraft {
   question: string;
@@ -50,5 +51,6 @@ export function usePollForm() {
     removeOption,
     reset,
     isValid,
+    onCreate,
   };
 }
