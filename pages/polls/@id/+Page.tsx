@@ -1,22 +1,16 @@
 import { lazy, Suspense, useState } from "react";
-import { usePageContext } from "vike-react/usePageContext";
+import { useData } from "vike-react/useData";
+import type { Data } from "./+data";
+
 const PollResults = lazy(() =>
   import("../../../components/PollResults").then((module) => ({
     default: module.PollResults,
   })),
 );
-import polls from "../../../data/polls.json";
 
 export default function PollDetails() {
-  const pageContext = usePageContext();
-  const pollId = pageContext.routeParams.id;
-  const poll = polls.find((poll) => Number(poll.id) === Number(pollId));
-
+  const { poll } = useData<Data>();
   const [hasVoted, setHasVoted] = useState(false);
-
-  if (!poll) {
-    return <p>Sondage introuvable.</p>;
-  }
 
   return (
     <main>
