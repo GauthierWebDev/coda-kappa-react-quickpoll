@@ -9,11 +9,11 @@ export default function Polls() {
     <main>
       <h1>Catalogue des sondages</h1>
 
-      <div className="bg-blue-200 h-52">
+      <div className="h-52">
         <List
           rowComponent={VirtualizedPollCard}
           rowCount={polls.length}
-          rowHeight={24}
+          rowHeight={42}
           rowProps={{ polls }}
         />
       </div>

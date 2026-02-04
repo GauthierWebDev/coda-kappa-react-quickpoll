@@ -7,7 +7,7 @@ interface PollCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function PollCard({ poll, ...rest }: PollCardProps) {
   return (
-    <article {...rest}>
+    <article {...rest} className={`p-2 border border-slate-400 rounded-lg`}>
       <h2>{poll.question}</h2>
     </article>
   );
