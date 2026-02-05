@@ -1,8 +1,8 @@
-import { authService } from "@/services/auth.service";
 import { Abort } from "telefunc";
+import { authService } from "@/services/auth.service";
 
 export async function onLogin(email: string, password: string) {
-  return { success: true, user: { email, password } };
+  return { success: true };
 }
 
 export async function onRegister(
@@ -34,5 +34,5 @@ export async function onRegister(
 
   await authService.register(name, email, password);
 
-  return { success: true, user: { name, email, password } };
+  return { success: true };
 }
