@@ -23,7 +23,19 @@ export const authService = {
   async generateJWT(userId: string) {
     return new jose.EncryptJWT({ id: userId })
       .setProtectedHeader({ alg: "dir", enc: "A128CBC-HS256" })
+      .setIssuedAt()
+      .setIssuer("urn:example:issuer")
+      .setAudience("urn:example:audience")
+      .setExpirationTime("2h")
       .encrypt(secret);
+  },
+
+  async verifyJwt(jwt: string) {
+    const { payload } = await jose.jwtDecrypt(jwt, secret, {
+      issuer: "urn:example:issuer",
+      audience: "urn:example:audience",
+    });
+    return payload as { id: string };
   },
 
   async getUserByEmail(email: string) {

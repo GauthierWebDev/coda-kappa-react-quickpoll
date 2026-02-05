@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { navigate, reload } from "vike/client/router";
 import { onLogin, onRegister } from "./useAuth.telefunc";
-import { navigate } from "vike/client/router";
 
 export function useAuth() {
   const [email, setEmail] = useState<string>("test@test.fr");
@@ -9,6 +9,7 @@ export function useAuth() {
 
   const login = async () => {
     await onLogin(email, password);
+    reload();
   };
 
   const register = async () => {

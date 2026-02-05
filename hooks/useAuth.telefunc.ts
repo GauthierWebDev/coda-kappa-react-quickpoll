@@ -6,7 +6,11 @@ export async function onLogin(email: string, password: string) {
   const { express } = getContext();
   const jwt = await authService.login(email, password);
 
-  express.res.cookie("auth_token", jwt, { httpOnly: true, sameSite: "lax" });
+  express.res.cookie("auth_token", jwt, {
+    httpOnly: true,
+    sameSite: "lax",
+    maxAge: 1000 * 60 * 60 * 2,
+  });
 
   return { success: true };
 }

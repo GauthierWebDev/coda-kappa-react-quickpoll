@@ -12,6 +12,8 @@ export default {
 
   extends: [vikeReact, vikePhoton],
 
+  passToClient: ["isAuthenticated"],
+
   // https://vike.dev/vike-photon
   photon: {
     server: "../server/entry.ts",
