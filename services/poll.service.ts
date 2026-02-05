@@ -1,13 +1,13 @@
-import type { Poll } from "@/types/poll";
-import fs from "node:fs/promises";
-import path from "node:path";
-
-const FILE_PATH = "/data/polls.json";
+import type { Poll } from "@/generated/prisma/client";
+import { getPrisma } from "@/utils/getPrisma";
 
 export const pollService = {
   async getPolls(): Promise<Poll[]> {
-    const polls = await import(FILE_PATH);
-    return polls.default;
+    const prisma = getPrisma();
+    const polls = await prisma.poll.findMany();
+    prisma.$disconnect();
+
+    return polls;
   },
 
   async getPollById(pollId: number): Promise<Poll> {

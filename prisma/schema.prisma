@@ -14,10 +14,43 @@ datasource db {
 }
 
 model User {
+  id              String           @id @default(uuid())
+  name            String
+  email           String           @unique
+  password        String
+  createdPolls    Poll[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  userVoteOptions UserVoteOption[]
+}
+
+model Poll {
   id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
+  question  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id])
+  options   Option[]
+  authorId  String
+}
+
+model Option {
+  id              String           @id @default(uuid())
+  label           String
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  poll            Poll             @relation(fields: [pollId], references: [id])
+  pollId          String
+  userVoteOptions UserVoteOption[]
+}
+
+model UserVoteOption {
+  user      User     @relation(fields: [userId], references: [id])
+  option    Option   @relation(fields: [optionId], references: [id])
+  userId    String
+  optionId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([userId, optionId])
 }

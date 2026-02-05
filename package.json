@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@photonjs/express": "^0.1.13",
+    "@prisma/adapter-better-sqlite3": "^7.3.0",
     "@prisma/client": "^7.3.0",
     "@universal-middleware/core": "^0.4.16",
+    "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
