@@ -10,32 +10,48 @@ export const pollService = {
     return polls;
   },
 
-  async getPollById(pollId: number): Promise<Poll> {
-    const polls = await pollService.getPolls();
-    const poll = polls.find((poll) => Number(poll.id) === pollId);
+  async getPollById(pollId: string) {
+    const prisma = getPrisma();
+    const poll = await prisma.poll.findUnique({
+      where: { id: pollId },
+      select: {
+        question: true,
+        author: { select: { name: true } },
+        options: {
+          select: {
+            label: true,
+            _count: { select: { userVoteOptions: true } },
+          },
+        },
+      },
+    });
+    prisma.$disconnect();
+
     if (!poll) throw new Error("Poll not found");
 
     return poll;
   },
 
-  async createPoll(pollData: Omit<Poll, "id" | "votes">) {
-    const polls = await pollService.getPolls();
-    const nextId = Math.max(...polls.map((poll) => Number(poll.id))) + 1;
+  async createPoll(
+    pollData: Omit<Poll, "id" | "createdAt" | "updatedAt"> & {
+      options: string[];
+    },
+  ) {
+    const prisma = getPrisma();
+    const newPoll = await prisma.poll.create({
+      data: {
+        question: pollData.question,
+        authorId: pollData.authorId,
 
-    const createdPoll: Poll = {
-      ...pollData,
-      votes: pollData.options.map((option) => ({
-        text: option,
-        votes: 0,
-      })),
-      id: nextId,
-    };
+        options: {
+          create: pollData.options.map((option) => ({
+            label: option,
+          })),
+        },
+      },
+    });
+    prisma.$disconnect();
 
-    await fs.writeFile(
-      path.join(path.dirname(".."), FILE_PATH),
-      JSON.stringify([...polls, createdPoll]),
-    );
-
-    return createdPoll;
+    return newPoll;
   },
 };
