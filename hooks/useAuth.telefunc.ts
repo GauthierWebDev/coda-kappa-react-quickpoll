@@ -1,7 +1,13 @@
 import { Abort } from "telefunc";
 import { authService } from "@/services/auth.service";
+import { getContext } from "@/utils/telefunc";
 
 export async function onLogin(email: string, password: string) {
+  const { express } = getContext();
+  const jwt = await authService.login(email, password);
+
+  express.res.cookie("auth_token", jwt, { httpOnly: true, sameSite: "lax" });
+
   return { success: true };
 }
 

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { onLogin, onRegister } from "./useAuth.telefunc";
+import { navigate } from "vike/client/router";
 
 export function useAuth() {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("test@test.fr");
+  const [password, setPassword] = useState<string>("testtesttest");
+  const [name, setName] = useState<string>("Jean");
 
   const login = async () => {
     await onLogin(email, password);
@@ -12,6 +13,7 @@ export function useAuth() {
 
   const register = async () => {
     await onRegister(name, email, password);
+    navigate("/login");
   };
 
   return {
