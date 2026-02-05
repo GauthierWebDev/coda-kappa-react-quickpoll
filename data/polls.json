@@ -4,26 +4,11 @@
     "question": "Quel est votre langage de programmation préféré ?",
     "options": ["JavaScript", "Python", "Java", "C#", "Ruby"],
     "votes": [
-      {
-        "text": "JavaScript",
-        "votes": 6541
-      },
-      {
-        "text": "Python",
-        "votes": 3515
-      },
-      {
-        "text": "Java",
-        "votes": 1023
-      },
-      {
-        "text": "C#",
-        "votes": 5412
-      },
-      {
-        "text": "Ruby",
-        "votes": 234
-      }
+      { "text": "JavaScript", "votes": 6541 },
+      { "text": "Python", "votes": 3515 },
+      { "text": "Java", "votes": 1023 },
+      { "text": "C#", "votes": 5412 },
+      { "text": "Ruby", "votes": 234 }
     ]
   },
   {
@@ -31,18 +16,9 @@
     "question": "Quel est votre OS préféré ?",
     "options": ["Windows", "macOS", "Linux"],
     "votes": [
-      {
-        "text": "Windows",
-        "votes": 9416
-      },
-      {
-        "text": "macOS",
-        "votes": 8413
-      },
-      {
-        "text": "Linux",
-        "votes": 8420
-      }
+      { "text": "Windows", "votes": 9416 },
+      { "text": "macOS", "votes": 8413 },
+      { "text": "Linux", "votes": 8420 }
     ]
   },
   {
@@ -50,18 +26,9 @@
     "question": "Quel est votre IDE préféré ?",
     "options": ["Visual Studio Code", "IntelliJ IDEA", "Eclipse"],
     "votes": [
-      {
-        "text": "Visual Studio Code",
-        "votes": 9781
-      },
-      {
-        "text": "IntelliJ IDEA",
-        "votes": 6415
-      },
-      {
-        "text": "Eclipse",
-        "votes": 389
-      }
+      { "text": "Visual Studio Code", "votes": 9781 },
+      { "text": "IntelliJ IDEA", "votes": 6415 },
+      { "text": "Eclipse", "votes": 389 }
     ]
   },
   {
@@ -69,18 +36,9 @@
     "question": "Quel est votre navigateur web préféré ?",
     "options": ["Chrome", "Firefox", "Safari"],
     "votes": [
-      {
-        "text": "Chrome",
-        "votes": 6784
-      },
-      {
-        "text": "Firefox",
-        "votes": 4561
-      },
-      {
-        "text": "Safari",
-        "votes": 1
-      }
+      { "text": "Chrome", "votes": 6784 },
+      { "text": "Firefox", "votes": 4561 },
+      { "text": "Safari", "votes": 1 }
     ]
   },
   {
@@ -88,18 +46,9 @@
     "question": "Quel est votre framework JavaScript préféré ?",
     "options": ["React", "Vue", "Angular"],
     "votes": [
-      {
-        "text": "React",
-        "votes": 4612
-      },
-      {
-        "text": "Vue",
-        "votes": 4601
-      },
-      {
-        "text": "Angular",
-        "votes": 3498
-      }
+      { "text": "React", "votes": 4612 },
+      { "text": "Vue", "votes": 4601 },
+      { "text": "Angular", "votes": 3498 }
     ]
   }
 ]

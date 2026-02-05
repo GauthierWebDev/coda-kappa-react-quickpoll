@@ -1,9 +1,10 @@
 import { List } from "react-window";
 import { VirtualizedPollCard } from "@/components/PollCard";
-import { generatePolls } from "@/utils/mockPolls";
+import { useData } from "vike-react/useData";
+import type { Data } from "./+data";
 
 export default function Polls() {
-  const polls = generatePolls(1000);
+  const { polls } = useData<Data>();
 
   return (
     <main>
