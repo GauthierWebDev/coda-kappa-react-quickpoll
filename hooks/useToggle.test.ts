@@ -1,6 +1,6 @@
 import { renderHook, act } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { useToggle } from "./useToggle";
+import { useToggle } from "@/hooks/useToggle";
 
 describe("useToggle", () => {
   it("should contains initial value (true)", () => {
