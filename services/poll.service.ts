@@ -1,5 +1,6 @@
 import type { Poll } from "@/generated/prisma/client";
 import { getPrisma } from "@/utils/getPrisma";
+import type { CreatePollInput } from "@/schemas/poll";
 
 export const pollService = {
   async getPolls(): Promise<Poll[]> {
@@ -32,16 +33,12 @@ export const pollService = {
     return poll;
   },
 
-  async createPoll(
-    pollData: Omit<Poll, "id" | "createdAt" | "updatedAt"> & {
-      options: string[];
-    },
-  ) {
+  async createPoll(pollData: CreatePollInput, userId: string) {
     const prisma = getPrisma();
     const newPoll = await prisma.poll.create({
       data: {
         question: pollData.question,
-        authorId: pollData.authorId,
+        authorId: userId,
 
         options: {
           create: pollData.options.map((option) => ({

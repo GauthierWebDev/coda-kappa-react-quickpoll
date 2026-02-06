@@ -1,6 +1,9 @@
+import { usePageContext } from "vike-react/usePageContext";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Register() {
+  const pageContext = usePageContext();
+  const { reason } = pageContext.urlParsed.search;
   const auth = useAuth();
 
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
@@ -11,6 +14,12 @@ export default function Register() {
   return (
     <main>
       <h1>Connexion</h1>
+
+      {reason === "create-poll" && (
+        <p className="bg-amber-500/50 p-4 rounded-md border-2 border-amber-600">
+          Vous devez vous connecter pour créer un sondage
+        </p>
+      )}
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
